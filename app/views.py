@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from .models import People
+from django.contrib.auth.decorators import login_required
 
 
-def list_people(request):
-    personality = People.objects.all()
-    return render(request, 'app/list_people.html', {'personality': personality})
+# Create your views here.
+def login(request):
+    return render(request, 'login.html')
+
+
+@login_required
+def home(request):
+    return render(request, 'home.html')
